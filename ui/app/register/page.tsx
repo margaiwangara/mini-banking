@@ -8,6 +8,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { registerSchema, type RegisterFormData } from '../lib/schemas';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import PasswordStrength from '../components/PasswordStrength';
 
 export default function RegisterPage() {
   const {
@@ -20,10 +21,13 @@ export default function RegisterPage() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
   });
+
+  const password = watch('password', '');
 
   useEffect(() => {
     if (!authLoading && isAuthenticated) {
@@ -133,16 +137,14 @@ export default function RegisterPage() {
                   type="password"
                   autoComplete="new-password"
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  placeholder="••••••••"
+                  placeholder="Enter a strong password"
                 />
                 {errors.password && (
                   <p className="mt-1 text-sm text-red-600">
                     {errors.password.message}
                   </p>
                 )}
-                <p className="mt-1 text-xs text-gray-500">
-                  Must be at least 6 characters
-                </p>
+                <PasswordStrength password={password} />
               </div>
             </div>
 
