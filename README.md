@@ -208,13 +208,24 @@ Total:                 0.00 ✓ (balanced)
 ### Authentication (Public)
 
 - `POST /auth/register` - Register a new user (automatically creates USD and EUR accounts with 5000 initial balance each)
+
+  **Password Requirements:**
+
+  - Minimum 8 characters
+  - At least one uppercase letter (A-Z)
+  - At least one lowercase letter (a-z)
+  - At least one number (0-9)
+  - At least one symbol (!@#$%^&\* etc.)
+  - Must not be a common/dictionary password (checked via zxcvbn)
+
   ```json
   {
     "email": "user@example.com",
-    "password": "password123",
+    "password": "MyStr0ng!Pass",
     "name": "John Doe"
   }
   ```
+
 - `POST /auth/login` - Login and get JWT token
   ```json
   {
@@ -332,6 +343,17 @@ npm test
 
 - **JWT Authentication**: All protected routes require a valid JWT token
 - **Password Hashing**: Passwords are hashed using bcrypt (10 salt rounds)
+- **Strong Password Requirements**: Enforced on both frontend and backend
+  - Minimum 8 characters
+  - At least one uppercase letter
+  - At least one lowercase letter
+  - At least one number
+  - At least one symbol
+- **Password Strength Analysis**: Uses zxcvbn library to detect common/weak passwords
+  - Real-time password strength feedback
+  - Dictionary/common password detection
+  - Actionable suggestions for improvement
+  - All analysis happens client-side (no API calls)
 - **Protected Routes**: All account, transaction, and exchange endpoints are protected
 - **CORS**: Configured to allow requests from frontend URL only
 

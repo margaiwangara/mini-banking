@@ -41,6 +41,12 @@ The application will be available at `http://localhost:3000`
 - Exchange currency (USD ↔ EUR)
 - View transaction history
 - Real-time balance updates
+- **Strong Password Requirements** with real-time strength analysis
+  - Visual password strength indicator
+  - Real-time feedback on password requirements
+  - Dictionary/common password detection (via zxcvbn)
+  - Actionable suggestions for password improvement
+  - All password analysis happens client-side for privacy
 
 ## Project Structure
 
