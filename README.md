@@ -2,14 +2,6 @@
 
 A clean, performant mini banking platform bfrontendlt with NestJS (backend) and Next.js (frontend), following double-entry accounting principles.
 
-## Screenshots
-
-[Walkthrough](media/walkthough.mp4)
-[Exchange Page](media/exchange.png)
-[Transactions Page](media/transactions.png)
-[Transfer Page](media/transfer.png)
-[Accounts Page](media/transfer.png)
-
 ## 🏗️ Architecture
 
 - **Backend (`backend/`)**: NestJS + PostgreSQL + TypeORM
