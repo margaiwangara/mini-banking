@@ -1,31 +1,39 @@
 # Shawdy - Mini Banking Platform
 
-A clean, performant mini banking platform built with NestJS (backend) and Next.js (frontend), following double-entry accounting principles.
+A clean, performant mini banking platform bfrontendlt with NestJS (backend) and Next.js (frontend), following double-entry accounting principles.
+
+## Screenshots
+
+[Walkthrough](media/walkthough.mp4)
+[Exchange Page](media/exchange.png)
+[Transactions Page](media/transactions.png)
+[Transfer Page](media/transfer.png)
+[Accounts Page](media/transfer.png)
 
 ## 🏗️ Architecture
 
-- **Backend (`api/`)**: NestJS + PostgreSQL + TypeORM
-- **Frontend (`ui/`)**: Next.js 14 + React 19 + Tailwind CSS
+- **Backend (`backend/`)**: NestJS + PostgreSQL + TypeORM
+- **Frontend (`frontend/`)**: Next.js 14 + React 19 + Tailwind CSS
 
 ## 🔑 Core Principles
 
-1. **Financial correctness > UI polish**
+1. **Financial correctness > frontend polish**
 2. **Ledger is the source of truth**
 3. **No partial transactions**
 4. **No floating-point math** (uses Decimal.js)
 5. **Performance via caching, not shortcuts**
 6. **Clean architecture and testability**
 
-## 🚀 Quick Start
+## 🚀 Qfrontendck Start
 
-> 📖 **New to Shawdy?** Check out [QUICKSTART.md](QUICKSTART.md) for a step-by-step guide!
+> 📖 **New to Shawdy?** Check out [QfrontendCKSTART.md](QfrontendCKSTART.md) for a step-by-step gfrontendde!
 
-### Prerequisites
+### Prereqfrontendsites
 
 - Node.js 18+ and npm
 - Docker and Docker Compose (recommended) OR PostgreSQL 14+ and Redis installed locally
 
-### Quick Setup (Automated)
+### Qfrontendck Setup (Automated)
 
 Run the setup script to automatically configure everything:
 
@@ -123,7 +131,7 @@ docker-compose logs -f
 ### Frontend Setup
 
 ```bash
-cd ui
+cd frontend
 npm install
 
 # Create .env.example file (if it doesn't exist)
@@ -142,13 +150,13 @@ cp .env.example .env.local
 npm run dev
 ```
 
-The UI will be available at `http://localhost:3000`
+The frontend will be available at `http://localhost:3000`
 
 ## 📊 Database Schema
 
 ### Users
 
-- `id` (UUID)
+- `id` (UfrontendD)
 - `email` (string, unique)
 - `password` (string, hashed with bcrypt)
 - `name` (string)
@@ -156,39 +164,39 @@ The UI will be available at `http://localhost:3000`
 
 ### Accounts
 
-- `id` (UUID)
-- `userId` (UUID)
+- `id` (UfrontendD)
+- `userId` (UfrontendD)
 - `currency` (USD | EUR)
 - `name` (string)
 - `createdAt`, `updatedAt`
 
 ### Transactions
 
-- `id` (UUID)
-- `userId` (UUID)
+- `id` (UfrontendD)
+- `userId` (UfrontendD)
 - `type` (TRANSFER | EXCHANGE | DEPOSIT | WITHDRAWAL)
 - `description` (text)
 - `createdAt`
 
 ### Ledger Entries
 
-- `id` (UUID)
-- `transactionId` (UUID)
-- `accountId` (UUID)
+- `id` (UfrontendD)
+- `transactionId` (UfrontendD)
+- `accountId` (UfrontendD)
 - `amount` (NUMERIC(14,2)) - Positive for debits, negative for credits
 - `description` (text)
 - `createdAt`
 
 **Double-Entry Rule**: For each transaction, `SUM(amount)` of all ledger entries must equal 0.
 
-### System Equity Account
+### System Eqfrontendty Account
 
-The platform uses a **System Equity Account** (`00000000-0000-0000-0000-000000000001`) to maintain double-entry accounting integrity for deposits and initial balances.
+The platform uses a **System Eqfrontendty Account** (`00000000-0000-0000-0000-000000000001`) to maintain double-entry accounting integrity for deposits and initial balances.
 
 **Purpose:**
 
 - Balances deposit transactions (ensures sum of ledger entries equals zero)
-- Represents the bank's equity/capital as the source of funds
+- Represents the bank's eqfrontendty/capital as the source of funds
 - Maintains accounting integrity for system-generated transactions
 
 **How it works:**
@@ -196,7 +204,7 @@ When a user receives an initial deposit of 5000 USD:
 
 ```
 User USD Account:     +5000.00 (credit - money in)
-System Equity Account: -5000.00 (debit - source)
+System Eqfrontendty Account: -5000.00 (debit - source)
 ─────────────────────────────────
 Total:                 0.00 ✓ (balanced)
 ```
@@ -209,7 +217,7 @@ Total:                 0.00 ✓ (balanced)
 
 - `POST /auth/register` - Register a new user (automatically creates USD and EUR accounts with 5000 initial balance each)
 
-  **Password Requirements:**
+  **Password Reqfrontendrements:**
 
   - Minimum 8 characters
   - At least one uppercase letter (A-Z)
@@ -234,16 +242,16 @@ Total:                 0.00 ✓ (balanced)
   }
   ```
   Returns: `{ "access_token": "...", "user": {...} }`
-- `GET /auth/me` - Get current user information (requires JWT token)
+- `GET /auth/me` - Get current user information (reqfrontendres JWT token)
   Returns: `{ "id": "...", "email": "...", "name": "..." }`
 
-### Accounts (Protected - requires JWT token)
+### Accounts (Protected - reqfrontendres JWT token)
 
-- `GET /accounts` - List user accounts (requires `Authorization: Bearer <token>`)
+- `GET /accounts` - List user accounts (reqfrontendres `Authorization: Bearer <token>`)
 - `GET /accounts/:id` - Get account details
 - `POST /accounts` - Create new account
 
-### Transactions (Protected - requires JWT token)
+### Transactions (Protected - reqfrontendres JWT token)
 
 - `GET /transactions` - List transactions (with pagination and type filtering)
   - Query parameters: `limit` (default: 50), `offset` (default: 0), `type` (optional: TRANSFER, EXCHANGE, DEPOSIT, WITHDRAWAL)
@@ -251,13 +259,13 @@ Total:                 0.00 ✓ (balanced)
 - `GET /transactions/:id` - Get transaction details
 - `POST /transactions/transfer` - Transfer between accounts
 
-### Exchange (Protected - requires JWT token)
+### Exchange (Protected - reqfrontendres JWT token)
 
 - `POST /exchange` - Exchange currency
 - `GET /exchange/rate?from=USD&to=EUR` - Get exchange rate
 - `GET /exchange/calculate?amount=100&from=USD&to=EUR` - Calculate exchange
 
-**Note:** All endpoints except `/auth/register` and `/auth/login` require a JWT token in the `Authorization` header:
+**Note:** All endpoints except `/auth/register` and `/auth/login` reqfrontendre a JWT token in the `Authorization` header:
 
 ```
 Authorization: Bearer <your-jwt-token>
@@ -275,7 +283,7 @@ The API includes comprehensive Swagger/OpenAPI documentation. Once the backend s
 http://localhost:3001/api
 ```
 
-The Swagger UI provides:
+The Swagger frontend provides:
 
 - Interactive API documentation
 - Request/response schemas
@@ -284,7 +292,7 @@ The Swagger UI provides:
 
 ## 🐛 Error Tracking (Sentry) - Optional
 
-Both the API and UI include optional Sentry integration for error tracking and performance monitoring.
+Both the API and frontend include optional Sentry integration for error tracking and performance monitoring.
 
 ### Setup
 
@@ -294,7 +302,7 @@ Both the API and UI include optional Sentry integration for error tracking and p
 
 ### Backend Configuration
 
-Add to `api/.env`:
+Add to `backend/.env`:
 
 ```bash
 SENTRY_DSN=https://your-backend-dsn@sentry.io/project-id
@@ -304,7 +312,7 @@ SENTRY_PROFILES_SAMPLE_RATE=0.1  # 10% of profiles (optional)
 
 ### Frontend Configuration
 
-Add to `ui/.env.local`:
+Add to `frontend/.env.local`:
 
 ```bash
 NEXT_PUBLIC_SENTRY_DSN=https://your-frontend-dsn@sentry.io/project-id
@@ -341,9 +349,9 @@ npm test
 
 ## 🔒 Security Features
 
-- **JWT Authentication**: All protected routes require a valid JWT token
+- **JWT Authentication**: All protected routes reqfrontendre a valid JWT token
 - **Password Hashing**: Passwords are hashed using bcrypt (10 salt rounds)
-- **Strong Password Requirements**: Enforced on both frontend and backend
+- **Strong Password Reqfrontendrements**: Enforced on both frontend and backend
   - Minimum 8 characters
   - At least one uppercase letter
   - At least one lowercase letter
@@ -402,12 +410,12 @@ The project includes several helper scripts:
   - Sets up database and runs migrations
   - Generates JWT secret
 
-- **`./setup-env-files.sh`** - Creates `.env.example` files for api and ui
+- **`./setup-env-files.sh`** - Creates `.env.example` files for api and frontend
 
-- **`api/setup-db.sh`** - Sets up database and checks Docker containers
+- **`backend/setup-db.sh`** - Sets up database and checks Docker containers
 
 ## 📚 Documentation
 
-- **[QUICKSTART.md](QUICKSTART.md)** - Step-by-step setup guide for beginners
-- **[api/README.md](api/README.md)** - Backend API documentation
-- **[ui/README.md](ui/README.md)** - Frontend documentation
+- **[QfrontendCKSTART.md](QfrontendCKSTART.md)** - Step-by-step setup gfrontendde for beginners
+- **[backend/README.md](backend/README.md)** - Backend API documentation
+- **[frontend/README.md](frontend/README.md)** - Frontend documentation
