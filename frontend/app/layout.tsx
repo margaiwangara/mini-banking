@@ -5,7 +5,7 @@ import { QueryProvider } from './providers/QueryProvider';
 import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
-  title: 'Shawdy - Mini Banking Platform',
+  title: 'Mini Banking Platform',
   description: 'A clean, performant mini banking platform',
 };
 

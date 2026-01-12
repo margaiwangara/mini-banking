@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-Get Shawdy Banking Platform up and running in minutes!
+Get Mini Banking Platform up and running in minutes!
 
 ## Automated Setup (Recommended)
 
@@ -10,6 +10,7 @@ Get Shawdy Banking Platform up and running in minutes!
 ```
 
 This will:
+
 - ✅ Install all dependencies
 - ✅ Create environment files
 - ✅ Start Docker services (PostgreSQL & Redis)
@@ -104,15 +105,18 @@ Open http://localhost:3000 in your browser.
 ## Troubleshooting
 
 ### Database connection errors
+
 - Make sure Docker containers are running: `docker-compose ps`
-- Check database exists: `docker exec shawdy-postgres psql -U postgres -l`
+- Check database exists: `docker exec banking-postgres psql -U postgres -l`
 
 ### JWT errors
+
 - Make sure `JWT_SECRET` is set in `.env`
 - Generate a new secret: `openssl rand -base64 32`
 
 ### Migration errors
-- Drop and recreate database: `docker exec shawdy-postgres psql -U postgres -c "DROP DATABASE shawdy; CREATE DATABASE shawdy;"`
+
+- Drop and recreate database: `docker exec banking-postgres psql -U postgres -c "DROP DATABASE banking; CREATE DATABASE banking;"`
 - Run migrations again: `npm run migration:run`
 
 ## Next Steps

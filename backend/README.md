@@ -1,4 +1,4 @@
-# Shawdy API
+# Banking API
 
 Backend API for the Mini Banking Platform built with NestJS.
 
@@ -33,7 +33,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=postgres
 DB_PASSWORD=postgres
-DB_DATABASE=shawdy
+DB_DATABASE=banking
 
 # Redis Configuration (optional - falls back to in-memory cache if not available)
 REDIS_HOST=localhost
@@ -67,11 +67,11 @@ cp .env.example .env
 # Check if containers are running
 docker-compose ps
 
-# Verify database was created (should show "shawdy" in the list)
-docker exec shawdy-postgres psql -U postgres -l
+# Verify database was created (should show "banking" in the list)
+docker exec banking-postgres psql -U postgres -l
 
 # If database doesn't exist, create it manually:
-docker exec shawdy-postgres psql -U postgres -c "CREATE DATABASE shawdy;"
+docker exec banking-postgres psql -U postgres -c "CREATE DATABASE banking;"
 
 # Or use the setup script:
 ./setup-db.sh
@@ -113,7 +113,7 @@ npm install
 3. Start PostgreSQL locally and create database:
 
 ```bash
-createdb shawdy
+createdb banking
 ```
 
 4. Start Redis locally (if installed)
@@ -149,10 +149,10 @@ docker-compose logs -f
 docker-compose ps
 
 # Access PostgreSQL CLI
-docker exec -it shawdy-postgres psql -U postgres -d shawdy
+docker exec -it banking-postgres psql -U postgres -d banking
 
 # Create database manually (if needed)
-docker exec shawdy-postgres psql -U postgres -c "CREATE DATABASE shawdy;"
+docker exec banking-postgres psql -U postgres -c "CREATE DATABASE banking;"
 ```
 
 ### Troubleshooting
@@ -164,7 +164,7 @@ docker exec shawdy-postgres psql -U postgres -c "CREATE DATABASE shawdy;"
 ./setup-db.sh
 
 # Or manually create the database
-docker exec shawdy-postgres psql -U postgres -c "CREATE DATABASE shawdy;"
+docker exec banking-postgres psql -U postgres -c "CREATE DATABASE banking;"
 ```
 
 ## Project Structure

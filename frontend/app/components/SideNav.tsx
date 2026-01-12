@@ -85,7 +85,7 @@ export default function SideNav({ activeTab, onTabChange }: SideNavProps) {
         <div className="h-full flex flex-col">
           {/* Logo/Header */}
           <div className="p-6 border-b border-gray-200">
-            <h1 className="text-2xl font-bold text-gray-900">Shawdy</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Mini</h1>
             <p className="text-sm text-gray-500 mt-1">Banking Platform</p>
           </div>
 

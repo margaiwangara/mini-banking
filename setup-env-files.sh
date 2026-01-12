@@ -13,7 +13,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=postgres
 DB_PASSWORD=postgres
-DB_DATABASE=shawdy
+DB_DATABASE=banking
 
 # Redis Configuration (optional - falls back to in-memory cache if not available)
 REDIS_HOST=localhost

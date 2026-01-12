@@ -9,7 +9,7 @@ initSentry();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -25,8 +25,10 @@ async function bootstrap() {
 
   // Swagger/OpenAPI setup
   const config = new DocumentBuilder()
-    .setTitle('Shawdy Banking Platform API')
-    .setDescription('Mini Banking Platform API with double-entry accounting system')
+    .setTitle('Mini Banking Platform API')
+    .setDescription(
+      'Mini Banking Platform API with double-entry accounting system',
+    )
     .setVersion('1.0')
     .addBearerAuth(
       {
@@ -55,7 +57,9 @@ async function bootstrap() {
   const port = process.env.PORT || 3001;
   await app.listen(port);
   console.log(`🚀 Application is running on: http://localhost:${port}`);
-  console.log(`📚 Swagger documentation available at: http://localhost:${port}/api`);
+  console.log(
+    `📚 Swagger documentation available at: http://localhost:${port}/api`,
+  );
 }
 
 bootstrap();

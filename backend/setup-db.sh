@@ -5,7 +5,7 @@
 echo "🔍 Checking if Docker containers are running..."
 
 # Check if postgres container is running
-if ! docker ps --format '{{.Names}}' | grep -q "shawdy-postgres"; then
+if ! docker ps --format '{{.Names}}' | grep -q "banking-postgres"; then
     echo "❌ PostgreSQL container is not running"
     echo "📦 Starting Docker Compose services..."
     docker-compose up -d
@@ -15,7 +15,7 @@ fi
 
 # Wait for PostgreSQL to be ready
 echo "⏳ Waiting for PostgreSQL to be ready..."
-until docker exec shawdy-postgres pg_isready -U postgres > /dev/null 2>&1; do
+until docker exec banking-postgres pg_isready -U postgres > /dev/null 2>&1; do
     echo "   Waiting for PostgreSQL..."
     sleep 2
 done
@@ -23,14 +23,14 @@ done
 echo "✅ PostgreSQL is ready!"
 
 # Check if database exists
-DB_EXISTS=$(docker exec shawdy-postgres psql -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='shawdy'" 2>/dev/null)
+DB_EXISTS=$(docker exec banking-postgres psql -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='banking'" 2>/dev/null)
 
 if [ "$DB_EXISTS" != "1" ]; then
-    echo "📝 Database 'shawdy' does not exist, creating it..."
-    docker exec shawdy-postgres psql -U postgres -c "CREATE DATABASE shawdy;"
-    echo "✅ Database 'shawdy' created!"
+    echo "📝 Database 'banking' does not exist, creating it..."
+    docker exec banking-postgres psql -U postgres -c "CREATE DATABASE banking;"
+    echo "✅ Database 'banking' created!"
 else
-    echo "✅ Database 'shawdy' already exists"
+    echo "✅ Database 'banking' already exists"
 fi
 
 echo ""

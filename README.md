@@ -1,4 +1,4 @@
-# Shawdy - Mini Banking Platform
+# Mini Banking Platform
 
 A clean, performant mini banking platform bfrontendlt with NestJS (backend) and Next.js (frontend), following double-entry accounting principles.
 
@@ -26,7 +26,7 @@ A clean, performant mini banking platform bfrontendlt with NestJS (backend) and 
 
 ## 🚀 Qfrontendck Start
 
-> 📖 **New to Shawdy?** Check out [QfrontendCKSTART.md](QfrontendCKSTART.md) for a step-by-step gfrontendde!
+> 📖 **New to Banking?** Check out [QfrontendCKSTART.md](QfrontendCKSTART.md) for a step-by-step gfrontendde!
 
 ### Prereqfrontendsites
 
@@ -64,7 +64,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=postgres
 DB_PASSWORD=postgres
-DB_DATABASE=shawdy
+DB_DATABASE=banking
 
 # Redis Configuration (optional - falls back to in-memory cache if not available)
 REDIS_HOST=localhost
@@ -95,7 +95,7 @@ cp .env.example .env
 docker-compose up -d
 
 # Option 2: Or start PostgreSQL locally and create database
-# createdb shawdy
+# createdb banking
 
 # Wait for services to be ready, then run migrations
 npm run migration:run

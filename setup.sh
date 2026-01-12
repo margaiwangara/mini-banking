@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Complete setup script for Shawdy Banking Platform
+# Complete setup script for Banking Platform
 # This script sets up both backend and frontend
 
 set -e
 
-echo "🚀 Setting up Shawdy Banking Platform..."
+echo "🚀 Setting up Banking Platform..."
 echo ""
 
 # Check if Docker is running
@@ -35,7 +35,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=postgres
 DB_PASSWORD=postgres
-DB_DATABASE=shawdy
+DB_DATABASE=banking
 
 # Redis Configuration (optional - falls back to in-memory cache if not available)
 REDIS_HOST=localhost
@@ -65,16 +65,16 @@ docker-compose up -d
 # Wait for PostgreSQL
 echo "   Waiting for PostgreSQL to be ready..."
 sleep 5
-until docker exec shawdy-postgres pg_isready -U postgres > /dev/null 2>&1; do
+until docker exec banking-postgres pg_isready -U postgres > /dev/null 2>&1; do
     echo "      Waiting for PostgreSQL..."
     sleep 2
 done
 
 # Create database if it doesn't exist
-DB_EXISTS=$(docker exec shawdy-postgres psql -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='shawdy'" 2>/dev/null || echo "0")
+DB_EXISTS=$(docker exec banking-postgres psql -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='banking'" 2>/dev/null || echo "0")
 if [ "$DB_EXISTS" != "1" ]; then
     echo "   Creating database..."
-    docker exec shawdy-postgres psql -U postgres -c "CREATE DATABASE shawdy;" > /dev/null 2>&1
+    docker exec banking-postgres psql -U postgres -c "CREATE DATABASE banking;" > /dev/null 2>&1
     echo "   ✅ Database created"
 else
     echo "   ✅ Database already exists"
