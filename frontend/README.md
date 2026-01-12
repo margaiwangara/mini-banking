@@ -1,6 +1,6 @@
 # Shawdy UI
 
-Frontend for the Mini Banking Platform built with Next.js 14 and React 19.
+Frontend for the Mini Banking Platform built with Next.js 15 (App Router) and React 19.
 
 ## Setup
 
