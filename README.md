@@ -1,6 +1,17 @@
 # Mini Banking Platform
 
-A clean, performant mini banking platform bfrontendlt with NestJS (backend) and Next.js (frontend), following double-entry accounting principles.
+A clean, performant mini banking platform built with NestJS (backend) and Next.js (frontend), following double-entry accounting principles.
+
+## Screenshots
+<img width="1512" height="865" alt="transactions" src="https://github.com/user-attachments/assets/a051b1fa-3d46-4f35-92e6-8e1a698c6eda" />
+
+<img width="1512" height="865" alt="accounts" src="https://github.com/user-attachments/assets/823d5388-8373-45ad-aede-a0d37c38c5d5" />
+
+<img width="1512" height="865" alt="transfer" src="https://github.com/user-attachments/assets/357b2c91-6758-4b8c-aaf3-197811a3a63d" />
+
+<img width="1512" height="865" alt="exchange" src="https://github.com/user-attachments/assets/12677ac8-2ce3-4d83-b09d-14519e22f38c" />
+
+https://github.com/user-attachments/assets/246bb081-aff1-4708-a6df-e6312bf653cf
 
 ## 🏗️ Architecture
 
